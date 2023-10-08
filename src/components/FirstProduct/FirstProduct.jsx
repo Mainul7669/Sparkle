@@ -91,7 +91,7 @@ const JewelryCard = ({ title, price, image }) => {
   );
 };
 
-const Product = () => {
+const FirstProduct = () => {
   // Sample data for jewelry cards
   const jewelryData = [
     {
@@ -175,4 +175,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default FirstProduct;
