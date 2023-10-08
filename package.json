@@ -12,13 +12,17 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "framer-motion": "^10.16.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.16.0",
-    "sort-by": "^1.2.0"
+    "react-tippy": "^1.4.0",
+    "react-tooltip": "^5.21.5",
+    "sort-by": "^1.2.0",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
