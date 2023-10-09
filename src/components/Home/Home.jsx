@@ -3,6 +3,7 @@ import FirstProduct from "../FirstProduct/FirstProduct";
 import Discount from "../Discount/Discount";
 import SecondProduct from "../SecondProduct/SecondProduct";
 import SecondBanner from "../SecondBanner/SecondBanner";
+import Testimonial from "../Testimonial/Testimonial";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <SecondProduct/>
       <Discount/>
       <SecondBanner/>
+      <Testimonial/>
     </div>
   );
 };
