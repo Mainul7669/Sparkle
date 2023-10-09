@@ -60,7 +60,6 @@ const Navbar = () => {
                        key={item.name}
                        to={item.href}
                        exact
-                       activeClassName="bg-[rgb(141,72,23)] text-white"
                        className={classNames(
                          "text-white hover:bg-[rgb(220,181,153)] hover:text-white",
                          "rounded-md px-3 py-2 text-sm font-medium"
@@ -109,29 +108,17 @@ const Navbar = () => {
                           </a>
                         )}
                       </Menu.Item>
+                    
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/signin"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
+                            Sign in
                           </a>
                         )}
                       </Menu.Item>
