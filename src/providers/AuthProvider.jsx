@@ -31,12 +31,13 @@ const auth = getAuth(app);
     }
 
 
-    const updateUserProfile = (name) => {
+    const updateUserProfile = (name, photoUrl) => {
       return updateProfile(auth.currentUser, {
-        displayName: name
-
+        displayName: name,
+        photoURL: photoUrl, // Include the photoUrl in the profile data
       });
     }
+    
 
     useEffect( () => {
      const unsubscribe = onAuthStateChanged(auth, currentUser => {

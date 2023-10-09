@@ -1,4 +1,3 @@
-
 import { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,7 +5,15 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 function SignUp() {
-  const { handleSubmit, reset, control, watch, setError, clearErrors, formState } = useForm();
+  const {
+    handleSubmit,
+    reset,
+    control,
+    watch,
+    setError,
+    clearErrors,
+    formState,
+  } = useForm();
   const { isSubmitting, errors } = formState;
 
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -21,30 +28,32 @@ function SignUp() {
       });
     } else {
       const displayName = `${data.firstName} ${data.lastName}`;
-      createUser(data.email, data.password)
-      .then(result => {
+      createUser(data.email, data.password).then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        updateUserProfile(displayName)
-        .then( () => {
-          console.log("user profile info updated");
-          reset();
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'User created successfully',
-            showConfirmButton: false,
-            timer: 1500
-          });
-
-          navigate('/');
-
-        })
-        .catch(error => console.log(error))
-       })
-
+  
+        // Extract the Photo URL from the data
+        const photoUrl = data.photoUrl;
+  
+        updateUserProfile(displayName, photoUrl) // Pass both name and photoUrl
+          .then(() => {
+            console.log("user profile info updated");
+            reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "User created successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+  
+            navigate("/");
+          })
+          .catch((error) => console.log(error));
+      });
     }
   };
+  
 
   const password = watch("password", "");
 
@@ -85,6 +94,24 @@ function SignUp() {
                   id="lastName"
                   className="mt-1 p-2 w-full bg-white text-black rounded-md border-b-2"
                   placeholder="Last Name"
+                />
+              )}
+            />
+          </div>
+
+          {/* New Photo URL field */}
+          <div className="mb-6">
+            <Controller
+              name="photoUrl" // Make sure this name matches the name in your data object
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <input
+                  {...field}
+                  type="text"
+                  id="photoUrl"
+                  className="mt-1 p-2 w-full bg-white text-black rounded-md border-b-2"
+                  placeholder="Photo URL"
                 />
               )}
             />
@@ -162,7 +189,6 @@ function SignUp() {
           </p>
         </div>
 
-
         <div className="mt-4 flex justify-center">
           <button className='flex justify-center gap-10 className=" border border-[#C7C7C7] hover:bg-[#BF9376]  py-2 px-6 text-sm font-semibold hover:border-0 text-black rounded-full'>
             <img
@@ -178,7 +204,5 @@ function SignUp() {
     </div>
   );
 }
-
-
 
 export default SignUp;
