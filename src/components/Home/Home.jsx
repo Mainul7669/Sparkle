@@ -4,6 +4,7 @@ import Discount from "../Discount/Discount";
 import SecondProduct from "../SecondProduct/SecondProduct";
 import SecondBanner from "../SecondBanner/SecondBanner";
 import Testimonial from "../Testimonial/Testimonial";
+import SubscribeBanner from "../SubscribeBanner/SubscribeBanner";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Discount/>
       <SecondBanner/>
       <Testimonial/>
+      <SubscribeBanner/>
     </div>
   );
 };
