@@ -3,7 +3,7 @@ const SubscribeBanner = () => {
     <div className="w-full mb-10">
       <div className="max-w-screen-2xl mx-auto grid sm:grid-cols-2 gap-0">
         {/* Left Side */}
-        <div className="sm:col-span-1 bg-[#DC915D] text-white p-8 lg:p-24">
+        <div className="sm:col-span-1 bg-[rgb(206,149,112)] text-white p-8 lg:p-24">
           <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold ">
             Keep in Touch with Us
           </div>
@@ -20,7 +20,7 @@ const SubscribeBanner = () => {
                 placeholder="Enter your email"
                 className="lg:w-full w-full px-4 py-4 text-gray-700 border border-gray-300 rounded-full focus:outline-none"
               />
-              <button className="hidden lg:block lg:absolute lg:left-[470px] px-10 py-2 text-white bg-[#653411] rounded-full text-md font-semibold transition duration-300">
+              <button className="hidden lg:block lg:absolute lg:left-[480px] px-10 py-2 text-white bg-[#653411] rounded-full text-md font-semibold transition duration-300">
                 Subscribe
               </button>
             </div>

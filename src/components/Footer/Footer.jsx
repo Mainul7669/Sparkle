@@ -10,7 +10,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#BE9375] py-6">
+    <footer className="bg-[#BE9375] py-6 lg:pt-20">
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-center">
           {/* Column 1: Logo and Text */}
@@ -94,7 +94,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="text-center text-white text-sm mt-6 mb-2">
+        <p className="text-center text-white text-sm mt-14 mb-2">
           &copy; 2023 Your Jewelry Store. All rights reserved.
         </p>
       </div>
