@@ -1,5 +1,6 @@
+
 const SecondProduct = () => {
-  
+
   return (
     <div className="flex flex-col items-center mx-8 mt-10 sm:flex-row sm:mx-8 mb-10">
       {/* Left Side */}
