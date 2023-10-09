@@ -1,14 +1,23 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { NavLink } from "react-router-dom";
 
 const navigation = [
-  { name: "Home", href: "/", current: true },
+  { name: "Home", href: "/", current: false },
   { name: "All jewelry", href: "/alljewellery", current: false },
   { name: " My Jewelry", href: "/myjewellery", current: false },
   { name: " Add jewelry", href: "addjewellery", current: false },
   { name: " Blogs", href: "/blogs", current: false },
 ];
+
+const navLinkStyles = ({ isActive }) => {
+  return {
+    backgroundColor: isActive ? 'rgb(141,72,23)' : '',
+    color: isActive ? 'white' : '',
+  };
+};
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -46,19 +55,19 @@ const Navbar = () => {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-[rgb(141,72,23)]  text-white"
-                            : "text-white hover:bg-[rgb(220,181,153)] hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
+                       <NavLink
+                       style={navLinkStyles}
+                       key={item.name}
+                       to={item.href}
+                       exact
+                       activeClassName="bg-[rgb(141,72,23)] text-white"
+                       className={classNames(
+                         "text-white hover:bg-[rgb(220,181,153)] hover:text-white",
+                         "rounded-md px-3 py-2 text-sm font-medium"
+                       )}
+                     >
+                       {item.name}
+                     </NavLink>
                     ))}
                   </div>
                 </div>

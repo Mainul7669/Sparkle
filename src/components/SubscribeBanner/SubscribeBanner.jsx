@@ -1,6 +1,6 @@
 const SubscribeBanner = () => {
   return (
-    <div className="w-full mb-10">
+    <div className="w-full lg:mb-0 ">
       <div className="max-w-screen-2xl mx-auto grid sm:grid-cols-2 gap-0">
         {/* Left Side */}
         <div className="sm:col-span-1 bg-[rgb(206,149,112)] text-white p-8 lg:p-24">
