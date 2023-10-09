@@ -1,7 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -13,17 +15,32 @@ const navigation = [
 
 const navLinkStyles = ({ isActive }) => {
   return {
-    backgroundColor: isActive ? 'rgb(141,72,23)' : '',
-    color: isActive ? 'white' : '',
+    backgroundColor: isActive ? "rgb(141,72,23)" : "",
+    color: isActive ? "white" : "",
   };
 };
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You are logged out",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <Disclosure as="nav" className="bg-[#BE9375]">
       {({ open }) => (
@@ -44,29 +61,29 @@ const Navbar = () => {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                 <a href="/">
-                 <img
-                    className="h-8 w-auto"
-                    src="/public/alphabets-flower-monogram-letter-s-free-png.webp"
-                    alt="Your Company"
-                  />
-                 </a>
+                  <a href="/">
+                    <img
+                      className="h-8 w-auto"
+                      src="/public/alphabets-flower-monogram-letter-s-free-png.webp"
+                      alt="Your Company"
+                    />
+                  </a>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                       <NavLink
-                       style={navLinkStyles}
-                       key={item.name}
-                       to={item.href}
-                       exact
-                       className={classNames(
-                         "text-white hover:bg-[rgb(220,181,153)] hover:text-white",
-                         "rounded-md px-3 py-2 text-sm font-medium"
-                       )}
-                     >
-                       {item.name}
-                     </NavLink>
+                      <NavLink
+                        style={navLinkStyles}
+                        key={item.name}
+                        to={item.href}
+                        exact
+                        className={classNames(
+                          "text-white hover:bg-[rgb(220,181,153)] hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
+                        )}
+                      >
+                        {item.name}
+                      </NavLink>
                     ))}
                   </div>
                 </div>
@@ -108,20 +125,41 @@ const Navbar = () => {
                           </a>
                         )}
                       </Menu.Item>
-                    
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="/signin"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+
+                      {user ? (
+                        <>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <a
+                                onClick={handleLogOut}
+                                href="/signin"
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Sign Out
+                              </a>
                             )}
-                          >
-                            Sign in
-                          </a>
-                        )}
-                      </Menu.Item>
+                          </Menu.Item>
+                        </>
+                      ) : (
+                        <>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <a
+                                
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Sign in
+                              </a>
+                            )}
+                          </Menu.Item>
+                        </>
+                      )}
                     </Menu.Items>
                   </Transition>
                 </Menu>
