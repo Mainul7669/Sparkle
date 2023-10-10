@@ -1,18 +1,52 @@
+import  { useState, useEffect } from 'react';
+
 const Banner = () => {
+  const [showText, setShowText] = useState(false);
+
+  useEffect(() => {
+    // Use a timeout to delay the animation
+    const timer = setTimeout(() => {
+      setShowText(true);
+    }, 500); // Adjust the delay as needed
+
+    // Clear the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="flex flex-col md:flex-row bg-[#BF9376] lg:pt-10 gap-6 pb-8 mb-4 ">
-      {" "}
+    <div className="flex flex-col md:flex-row bg-[#BF9376] lg:pt-10 gap-6 pb-8 mb-4">
       {/* Change the background color here */}
       {/* Text Content */}
       <div className="md:w-1/2 text-white p-8 lg:pl-40">
-        <h3 className="text-[#653411] text-xl mb-2 font-serif font-bold">
+        <h3
+          className="text-[#653411] text-xl mb-2 font-serif font-bold"
+          style={{
+            opacity: showText ? 1 : 0,
+            transform: showText ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'opacity 1.5s ease, transform 1.5s ease',
+          }}
+        >
           A Jewelry Designer with Morvin
         </h3>
-        <h1 className="text-4xl md:text-4xl font-serif font-bold mb-4">
+        <h1
+          className="text-4xl md:text-4xl font-serif font-bold mb-4"
+          style={{
+            opacity: showText ? 1 : 0,
+            transform: showText ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'opacity 1.5s ease, transform 1.5s ease 0.5s',
+          }}
+        >
           This is Precious Jewelry in Life That Will Increase The Value of Your
           Life
         </h1>
-        <p className="text-lg md:text-xl mb-8">
+        <p
+          className="text-lg md:text-xl mb-8"
+          style={{
+            opacity: showText ? 1 : 0,
+            transform: showText ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'opacity 1.5s ease, transform 1.5s ease 1s',
+          }}
+        >
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusantium doloremque laudantium, totam rem aperiam.
         </p>

@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FaInstagram } from "react-icons/fa";
 
 const testimonialData = [
   {
@@ -51,21 +52,21 @@ const TestimonialSwiper = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 5, // Initially show 1 testimonial
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     responsive: [
       {
-        breakpoint: 576, // Adjust this breakpoint as needed
+        breakpoint: 576,
         settings: {
-          slidesToShow: 2, // Show 3 testimonials on larger devices
+          slidesToShow: 2,
         },
       },
       {
-        breakpoint: 768, // Adjust this breakpoint as needed
+        breakpoint: 768,
         settings: {
-          slidesToShow: 2, // Show 5 testimonials on even larger devices
+          slidesToShow: 2,
         },
       },
     ],
@@ -89,14 +90,23 @@ const TestimonialSwiper = () => {
 
       <Slider {...settings}>
         {testimonialData.map((testimonial) => (
-          <div key={testimonial.id} className="text-center">
+          <div key={testimonial.id} className="text-center relative">
             <div className="relative inline-block">
-              <div className="lg:w-48 lg:h-48 w-full rounded-full overflow-hidden shadow-lg mx-auto">
+              <div className="lg:w-48 lg:h-48 w-full rounded-full overflow-hidden shadow-lg mx-auto relative">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
                   className="object-cover w-full h-full"
                 />
+                <div className="absolute top-0 left-0 w-full h-full opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center">
+                  <FaInstagram
+                    className="text-white text-4xl mt-2 cursor-pointer"
+                    onClick={() => {
+                      
+                    }}
+                  />
+                  <p className="text-white font-semibold text-lg">#$parkle</p>
+                </div>
               </div>
             </div>
           </div>

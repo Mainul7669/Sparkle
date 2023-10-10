@@ -141,7 +141,7 @@ const FirstProduct = () => {
     <div className="flex flex-col md:flex-row justify-center mx-auto">
       {/* Full-length card on the left */}
       <div className="md:w-[430px] p-4">
-        <div className="bg-white p-4 mb-4 relative">
+        <div className="bg-white p-4 relative">
           <img
             src="/public/Products/big.png"
             alt="Featured Jewelry"
