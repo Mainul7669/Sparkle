@@ -1,14 +1,14 @@
 import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
+import { Bars3Icon,  XMarkIcon } from "@heroicons/react/24/outline";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { FaOpencart } from "react-icons/fa";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
   { name: "All jewelry", href: "/alljewellery", current: false },
-  { name: " My Jewelry", href: "/myjewellery", current: false },
   { name: " Add jewelry", href: "addjewellery", current: false },
   { name: " Blogs", href: "/blogs", current: false },
 ];
@@ -89,28 +89,42 @@ const Navbar = () => {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+
+             <Link to="/myjewellery" >
+             <button
+                  type="button"
+                  className="relative rounded-full p-1 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[rgb(141,72,23)]"
+                >
+                  <span className="absolute -inset-1.5" />
+                  <span className="sr-only">View notifications</span>
+                  <FaOpencart className="h-7 w-7" aria-hidden="true" />
+                </button>
+             </Link>
+
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                    {
-                       user ? <>
-                       <img
-                          className="h-8 w-8 rounded-full"
-                          src={user?.photoURL}
-                          alt=""
-                        />
-                       </>
-                       : <> 
-                       <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://images.prismic.io/rigbiswas/81efc31a-eb74-490c-9733-671f289f23bb_2.+artificial+jewellery.jpg?auto=compress,format"
-                          alt=""
-                        />
-                       </>
-                    }
+                      {user ? (
+                        <>
+                          <img
+                            className="h-8 w-8 rounded-full"
+                            src={user?.photoURL}
+                            alt=""
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <img
+                            className="h-8 w-8 rounded-full"
+                            src="https://images.prismic.io/rigbiswas/81efc31a-eb74-490c-9733-671f289f23bb_2.+artificial+jewellery.jpg?auto=compress,format"
+                            alt=""
+                          />
+                        </>
+                      )}
                     </Menu.Button>
                   </div>
                   <Transition
